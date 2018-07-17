@@ -19,8 +19,6 @@ class WatchStar extends Component {
 			);
 		}	
 	}
-
-
 }
 
 export default WatchStar;

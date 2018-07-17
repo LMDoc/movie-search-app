@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 class WatchListItem extends Component {
-	constructor(props) {
-		super(props);
-
-	}
 
 	handleClick(title) {
 		this.props.watchListRemove(title)

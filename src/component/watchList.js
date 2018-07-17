@@ -46,7 +46,7 @@ class WatchList extends Component {
 			)
 		}
 
-		if(watchListItems.length == 0) {
+		if(watchListItems.length === 0) {
 			return (
 			<div>
 				<h3 className="watchListTitle" onClick={() => this.handleClick()}>Watch List</h3>

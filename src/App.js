@@ -86,7 +86,7 @@ class App extends Component {
           <SearchBar onSearchTermChange={(term) => this.movieSearch(term)} />
           <div className="loader">
             <h1>Just a moment...</h1>
-            <img src="./public/images/loading_spinner.gif" />
+            <img src="./../public/images/loading_spinner.gif" alt="loading-icon" />
           </div>
         </div>
       )
