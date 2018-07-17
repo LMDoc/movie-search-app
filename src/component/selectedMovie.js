@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import WatchStar from './toWatchStar';
 
-const SelectedMovie = ({movie}) => {
+const SelectedMovie = ({ movie, toWatchList, addToWatchList }) => {
 	
 	if(movie) {
-	let ratings = movie.Ratings.map(rating => <li><b id="yellow">{rating.Source}:</b> {rating.Value}</li>);
+	let ratings = movie.Ratings.map(rating => <li key={rating.Source}><b id="yellow">{rating.Source}:</b> {rating.Value}</li>);
 	let poster = movie.Poster == "N/A" ? "http://www.staticwhich.co.uk/static/images/products/no-image/no-image-available.png" : movie.Poster;
 	let imdb = `https://www.imdb.com/title/${movie.imdbID}`;
 
@@ -12,6 +13,7 @@ const SelectedMovie = ({movie}) => {
 	  		<div className="selected-container">
 	  			<div className="poster-frame">
 	  				<img src={poster} />
+	  				<WatchStar toWatchList={toWatchList} movie={movie} addToWatchList={ () => addToWatchList() } />
 	  			</div>
 		  		<div className="movie-details">
 			  		<h2>{movie.Title} ({movie.Year})</h2>

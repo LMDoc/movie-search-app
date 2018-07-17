@@ -9,7 +9,7 @@ const MovieList = (props) => {
 			onMovieSelect = {props.onMovieSelect}
 			movie = {movie}
 			key = {movie.imdbID} />
-		)
+		);
 	});
 
 	return (

@@ -7,7 +7,7 @@ html {
   flex-direction: column;
   margin: 10px auto;
   width: 85%;
-  height: 405px;
+  height: 480px;
   overflow: hidden;
 }
 
@@ -52,14 +52,66 @@ html {
 
 
 /*SEARCH BARS STYLES*/
+
+.title {
+  display: inline-block;
+  padding-top: 5px;
+  width: 94%;
+  margin: 10px auto;
+}
+
 .search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
   margin-left: 48px;
+  padding: 20px 0;
 }
 
 .search-bar input {
-  width: 460px;
   height: 30px;
-  font-size: 18px;
+  width: 30%;
+  font-size: 16px;
+  padding-right: 70px;
+  margin-right: 70px;
+  margin-top: -5px;
+}
+
+/*WATCH LIST*/
+
+.watchList {
+  display: none;
+  position: absolute;
+  background: #18121E;
+  padding: 15px 25px;
+  width: 350px;
+  margin: -15px 0 0 -282px;
+  color: white;
+  list-style: none;
+  border: 2px solid #EAC67A;
+}
+
+.watchListTitle {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 4px 12px;
+  margin-right: 90px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.watchList li {
+  padding: 6px 5px;
+}
+
+.watchList p {
+  color: lightgrey;
+}
+
+.fas {
+  color: red;
+  margin-right: 8px;
 }
 
 
@@ -68,15 +120,17 @@ html {
   display: flex;
   background: #18121E;
   width: 100%;
-  height: 531px;
+  padding-bottom: 150px; 
   border-top: 3px solid #984B43;
 }
 
 .selected-container {
   display: flex;
+  justify-content: center;
   border-radius: 5px;
-  margin: 15px auto; 
-  width: 55%;
+  margin: 25px auto; 
+  width: 70%;
+  padding-top: 20px;
 }
 
 .selected-container h2 {
@@ -84,27 +138,29 @@ html {
 }
 
 .poster-frame {
-  height: 100%;
+  height: 90%;
+  max-height: 450px;
+  min-width: 300px;
 }
 
 .poster-frame img {
   height: 100%;
-  width: 350px;
-  border-radius: 2px; 
+  width: 100%;
+  border-radius: 2px;
 }
 
 .movie-details {
   display: flex;
   flex-direction: column;
-  margin-left: 100px;
+  margin-left: 75px;
   color: white;
-  height: 95%;
-  width: 60%;
+  height: 100%;
+  width: 70%;
 }
 
 .movie-details-header {
   display: flex;
-  margin-bottom: 120px;
+  margin-bottom: 10px;
 }
 
 .ratings ul {
@@ -142,4 +198,155 @@ html {
 
 .unselected-container h2 {
   margin-left: 5px; 
+}
+
+#watchStar {
+  position: absolute;
+  color: #EAC67A;
+  z-index: 100;
+  font-size: 1.5em;
+  margin-left: -25px;
+  margin-top: -20px;
+  background: #18121E;
+  padding: 7px;
+  border-radius: 100%;
+  border: 1px dashed #EAC67A;
+}
+
+
+
+
+@media only screen and (max-width: 1480px) {
+  .movie-details-header {
+    flex-direction: column;
+  }
+
+  .ratings ul {
+    margin: 0;
+    padding: 0 0 40px 0;
+  }
+
+  .card-img {
+    height: 220px;
+    width: 150px;
+  }
+
+  .container {
+    height: 400px;
+    width: 90%;
+  }
+
+
+  .unselected-container h1 {
+    font-size: 70px; 
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+  .title {
+    width: 87%;
+  }
+
+  .card-img {
+    height: 180px;
+    width: 120px;
+  }
+
+  .card p {
+    margin: 12px auto;
+    width: 120px;
+    height: 35px;
+  }
+
+  .poster-frame {
+    height: 80%;
+    max-height: 300px;
+    min-width: 200px;
+  }
+
+  .movie-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    color: white;
+    height: 95%;
+    width: 100%;
+  }
+
+  .unselected-container h1 {
+    font-size: 40px; 
+    width: 110%;
+  }
+
+  .unselected-container h2 {
+    font-size: 20px;
+    margin: 25px 0;
+  }
+
+  .movie-details {
+    font-size: 10px;
+    width: 120%;
+  }
+
+  .movie-details-header {
+    margin-bottom: -10px;
+  }
+
+  .ratings ul {
+    list-style: none;
+    line-height: 15px;
+  }
+
+  #genre {
+    font-size: 1em;
+    padding: 2px 0 5px 0;
+  }
+}
+
+  @media only screen and (max-width: 540px) { 
+      
+      .title {
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .search-bar {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-left: 48px;
+        padding: 20px 0 70px 0;
+      }
+
+      .search-bar input {
+        width: 70%;
+        height: 40px;
+        font-size: 20px;
+        border: 1px solid lightgrey;
+      }
+
+      .poster-frame {
+        height: 60%;
+        max-height: 190px;
+        min-width: 100px;
+      }
+
+      .movie-details-header {
+        margin-bottom: -15px;
+      }
+
+      #watchStar {
+        font-size: 1em;
+        margin-left: -16px;
+        margin-top: -18px;
+        padding: 5px;
+      }
+
+      .watchList {
+        padding: 15px 25px;
+        width: 400px;
+        margin: -16px 0 0 -165px;
+      }
 }
