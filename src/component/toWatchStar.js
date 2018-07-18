@@ -7,7 +7,9 @@ class WatchStar extends Component {
 	}
 	
 	render() {
+		console.log(this.props.toWatchList)
 		if(!this.props.toWatchList.includes(this.props.movie.Title)) {
+
 			return (
 				<i id="watchStar" className="far fa-star" onClick={() => this.starOnClick()} ></i>
 			);

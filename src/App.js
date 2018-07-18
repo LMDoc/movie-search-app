@@ -20,9 +20,11 @@ class App extends Component {
   }
 
   componentWillMount() {
-      if(localStorage) {
-      let local = JSON.parse(localStorage.getItem('watchListLocal'));
-      this.setState({toWatchList: local})
+    //sets local storage to state if available
+      let local = localStorage.getItem('watchListLocal')
+      let list = JSON.parse(local);
+      if(list) {
+      this.setState({toWatchList: list})
     }
   }
 
@@ -66,7 +68,6 @@ class App extends Component {
   watchListRemove(title) {
       let newArr = this.state.toWatchList.slice();
       let index = newArr.indexOf(title);
-      console.log(index);
       newArr.splice(index, 1);
       this.setState({ toWatchList: newArr })
   }
@@ -91,7 +92,7 @@ class App extends Component {
         </div>
       )
     }
-
+    
     return (
       <div className="page">
         <div className="container">
