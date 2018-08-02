@@ -4,6 +4,7 @@ import _ from 'lodash';
 import MovieList from './component/movieList';
 import SearchBar from './component/search_bar';
 import SelectedMovie from './component/selectedMovie';
+import LoadingIcon from './loading_spinner.gif';
 
 
 class App extends Component {
@@ -49,27 +50,22 @@ class App extends Component {
   }
 
   addToWatchList() {
+    let checkArr = this.state.toWatchList.map(m => m.Title);
+
     //adds to list if movie isn't there already
-    if(!this.state.toWatchList.includes(this.state.selectedMovie.Title)) {
-      let newArr1 = this.state.toWatchList.slice();
-      newArr1.push(this.state.selectedMovie.Title);
-      this.setState({ toWatchList: newArr1 })
+    if(!checkArr.includes(this.state.selectedMovie.Title)) {
+      let newArr = [...this.state.toWatchList, this.state.selectedMovie]
+      this.setState({ toWatchList: newArr })
     }
 
-    //removes movie if on the list
-    if(this.state.toWatchList.includes(this.state.selectedMovie.Title)) {
-      let newArr2 = this.state.toWatchList.slice();
-      let index = newArr2.indexOf(this.state.selectedMovie.Title);
-      newArr2.splice(index, 1);
-      this.setState({ toWatchList: newArr2 })
+    if(checkArr.includes(this.state.selectedMovie.Title)) {
+      this.watchListRemove(this.state.selectedMovie)
     }
   }
 
   watchListRemove(title) {
-      let newArr = this.state.toWatchList.slice();
-      let index = newArr.indexOf(title);
-      newArr.splice(index, 1);
-      this.setState({ toWatchList: newArr })
+      let newArr = [...this.state.toWatchList].filter(m => m.Title !== title.Title);
+       this.setState({ toWatchList: newArr })
   }
 
   storeLocal(input) {
@@ -87,7 +83,7 @@ class App extends Component {
           <SearchBar onSearchTermChange={(term) => this.movieSearch(term)} />
           <div className="loader">
             <h1>Just a moment...</h1>
-            <img src="./../public/images/loading_spinner.gif" alt="loading-icon" />
+            <img src={LoadingIcon} alt="loading-icon" />
           </div>
         </div>
       )
@@ -97,7 +93,7 @@ class App extends Component {
       <div className="page">
         <div className="container">
           <h1 className="title" id="yellow">Quick Movie Facts!</h1>
-          <SearchBar onSearchTermChange={(term) => this.movieSearch(term)} toWatchList={this.state.toWatchList} watchListRemove={(title) => this.watchListRemove(title)}/>
+          <SearchBar onSearchTermChange={(term) => this.movieSearch(term)} toWatchList={this.state.toWatchList} watchListRemove={(title) => this.watchListRemove(title)} onMovieSelect={(selectedMovie) => this.selectedMovieSearch(selectedMovie)} />
           <MovieList movies={this.state.movies.Search} onMovieSelect={(selectedMovie) => this.selectedMovieSearch(selectedMovie)} />
         </div>
         <SelectedMovie  movie={ this.state.selectedMovie} toWatchList={ this.state.toWatchList } addToWatchList={ () => this.addToWatchList() } />

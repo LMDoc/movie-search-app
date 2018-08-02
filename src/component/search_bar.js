@@ -15,7 +15,7 @@ class SearchBar extends Component {
 					value = {this.state.term}
 					onChange={event => this.onInputChange(event.target.value)}
 					placeholder="What are you looking for?" />
-					<WatchList toWatchList={ this.props.toWatchList } watchListRemove={ (title) => this.props.watchListRemove(title)} />
+					<WatchList toWatchList={ this.props.toWatchList } watchListRemove={ this.props.watchListRemove } onMovieSelect= { this.props.onMovieSelect }/>
 			</div>
 			);
 	}

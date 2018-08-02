@@ -8,7 +8,7 @@ class WatchListItem extends Component {
 
 	render() {
 		return (
-			<li> <i className="fas fa-times" onClick={(title) => this.handleClick(this.props.movie)}></i> {this.props.movie} </li>
+			<li> <i className="fas fa-times" onClick={(title) => this.handleClick(this.props.movie)}></i> <span onClick={() => this.props.onMovieSelect(this.props.movie)} > {this.props.movie.Title} </span> </li>
 		)
 	}
 }

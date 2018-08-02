@@ -28,9 +28,10 @@ class WatchList extends Component {
 			const watchListItems = this.props.toWatchList.map((movie) => {
 				return (
 					<WatchListItem 
-						key={movie} 
+						key={movie.Title} 
 						movie={movie} 
-						watchListRemove={ (title) => this.props.watchListRemove(title)} 
+						watchListRemove={ this.props.watchListRemove }
+						onMovieSelect = { this.props.onMovieSelect }
 					/>
 				);
 			});
